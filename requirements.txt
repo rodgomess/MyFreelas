@@ -1,0 +1,7 @@
+playwright
+google-genai
+python-dotenv
+pandas
+supabase
+streamlit
+streamlit_option_menu
