@@ -1,13 +1,22 @@
 from playwright.sync_api import sync_playwright
-import os
-from dotenv import load_dotenv
-from database import SupabaseClient
+from database.supabase_client import SupabaseClient
+import argparse
+from time import sleep
 
-load_dotenv()
-SUPABASE_URL = os.getenv("SUPABASE_URL")
-SUPABASE_KEY = os.getenv("SUPABASE_KEY")
+from views.helper import load_config
 
-supabase = SupabaseClient(SUPABASE_URL, SUPABASE_KEY)
+def parse_args():
+    parser = argparse.ArgumentParser()
+    # Defina tudo num dicionário
+    arg_defs = {
+        "total_pages": dict(type=int, default=1, help="Total de paginas")
+    }
+    for name, opts in arg_defs.items():
+        parser.add_argument(f"--{name}", **opts)
+    
+    return parser.parse_args()
+
+supabase = SupabaseClient()
 
 def remove_duplicate(list_dicts):
     vistos = set()
@@ -20,17 +29,21 @@ def remove_duplicate(list_dicts):
     return resultado
 
 with sync_playwright() as p:
+    args = parse_args()
     browser = p.chromium.launch(headless=True)
 
     context = browser.new_context()
     page = context.new_page()
 
-    total_page = 11
+    total_pages = args.total_pages
     all_projects = []
+    URL_FILTERS = load_config()['url_99freelas']
+    URL_BASE = 'https://www.99freelas.com.br'
+    WEBSITE = "99freelas"
 
-    for page_number in range(total_page):
-        URL_BASE = 'https://www.99freelas.com.br'
-        url = f'{URL_BASE}/projects?order=mais-recentes&categoria=web-mobile-e-software&page={page_number}'
+    for page_number in range(total_pages):
+        
+        url = f'{URL_FILTERS}&page={page_number}'
         page.goto(url)
 
         projects_list = page.locator('ul.result-list li')
@@ -38,6 +51,11 @@ with sync_playwright() as p:
         
         for i in range(total_project):
             item = projects_list.nth(i)
+
+            # Clicar no botão de aceitar os cookies para nao atrapalhar
+            accept_btn = page.locator('#onetrust-accept-btn-handler')
+            if accept_btn.is_visible():
+                accept_btn.click()
 
             has_flag = item.evaluate("el => el.classList.contains('with-flag')")
             if not has_flag:
@@ -54,6 +72,7 @@ with sync_playwright() as p:
                 all_projects.append({
                     "title": title,
                     "description": description,
+                    "website": WEBSITE,
                     "link": URL_BASE+link,
                 })
     browser.close()
@@ -64,3 +83,6 @@ with sync_playwright() as p:
         supabase.upsert(all_projects)
 
     print(f"TOTAL DE PROJETOS ARMAZENADOS: {len(all_projects)}")
+
+
+    
