@@ -20,6 +20,7 @@ Funcionalidades:
 - Explica o motivo da decisão.
 
 📸 GIF – Extração e Análise
+![20250926-0002-14 5360566](https://github.com/user-attachments/assets/9002009e-1845-4b43-82fc-5dfbde4e3e47)
 
 ### 🔹 2. Escolher Propostas
 Após a análise, o usuário pode navegar, filtrar, ajustar as propostas geradas e decidir se aceita ou recusa cada projeto.
@@ -32,6 +33,7 @@ Funcionalidades:
 - Botões para Aceitar ou Recusar propostas, salvando a decisão no banco.
 
 📸 GIF – Escolher Propostas
+![Vídeo sem título ‐ Feito com o Clipchamp](https://github.com/user-attachments/assets/42b80238-466c-4267-b571-a584f357cb44)
 
 
 ### 🔹 3. Consultar Banco de Dados
@@ -50,6 +52,7 @@ Filtros avançados:
 - Possibilidade de apagar registros por faixa de data com confirmação (ação irreversível).
 
 📸 GIF – Consultar Banco de Dados
+![Vídeo sem título ‐ Feito com o Clipchamp (1)](https://github.com/user-attachments/assets/c3e54bc0-109a-4567-86ad-e5a451621634)
 
 
 ⚙️ Tecnologias Utilizadas
