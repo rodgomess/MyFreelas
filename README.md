@@ -33,7 +33,7 @@ Funcionalidades:
 - Botões para Aceitar ou Recusar propostas, salvando a decisão no banco.
 
 📸 GIF – Escolher Propostas
-![Vídeo sem título ‐ Feito com o Clipchamp](https://github.com/user-attachments/assets/42b80238-466c-4267-b571-a584f357cb44)
+<img src="https://github.com/user-attachments/assets/42b80238-466c-4267-b571-a584f357cb44" width="800"/>
 
 
 ### 🔹 3. Consultar Banco de Dados
@@ -52,7 +52,8 @@ Filtros avançados:
 - Possibilidade de apagar registros por faixa de data com confirmação (ação irreversível).
 
 📸 GIF – Consultar Banco de Dados
-![Vídeo sem título ‐ Feito com o Clipchamp (1)](https://github.com/user-attachments/assets/c3e54bc0-109a-4567-86ad-e5a451621634)
+<img src="https://github.com/user-attachments/assets/c3e54bc0-109a-4567-86ad-e5a451621634" width="800"/>
+![Vídeo sem título ‐ Feito com o Clipchamp (1)]()
 
 
 ⚙️ Tecnologias Utilizadas
