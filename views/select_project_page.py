@@ -76,7 +76,6 @@ def select_project_page(supabase):
         display_text(f'Propostas: {st.session_state.idx+1}/{len(st.session_state.projects_data)}')
 
         # Botão com link do projeto
-        print(project['link'])
         st.button("Link do Projeto", on_click=lambda: components.html(f"<script>window.open('{project['link']}', '_blank');</script>"))
             
 
